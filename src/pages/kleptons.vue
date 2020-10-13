@@ -10,8 +10,8 @@
 </template>
 
 <script>
-import navbar from '@/components/navbar'
-import klepton from '@/components/klepton'
+import navbar from '~/components/navbar'
+import klepton from '~/components/klepton'
 
 export default {
   name: 'kleptons',

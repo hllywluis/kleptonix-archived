@@ -47,23 +47,29 @@ export default {
     '@/plugins/headfulPlugin'
   ],
 
+  // Set src directory
+  srcDir: 'src',
+
+  // Set build directory
+  buildDir: 'functions/.nuxt',
+
   // Custom routing
   router: {
     extendRoutes (routes, resolve) {
       routes.push({
         name: 'Feed',
         path: '/',
-        component: resolve(__dirname, 'pages/feed.vue')
+        component: resolve(__dirname, 'src/pages/feed.vue')
       })
       routes.push({
         name: 'Browse',
         path: '/kleptons',
-        component: resolve(__dirname, 'pages/kleptons.vue')
+        component: resolve(__dirname, 'src/pages/kleptons.vue')
       })
       routes.push({
         name: 'SignIn',
         path: '/sign_in',
-        component: resolve(__dirname, 'pages/signin.vue'),
+        component: resolve(__dirname, 'src/pages/signin.vue'),
         meta: {
           noAuth: true
         }
@@ -71,7 +77,7 @@ export default {
       routes.push({
         name: 'SignUp',
         path: '/sign_up',
-        component: resolve(__dirname, 'pages/signup.vue'),
+        component: resolve(__dirname, 'src/pages/signup.vue'),
         meta: {
           noAuth: true
         }
@@ -79,7 +85,7 @@ export default {
       routes.push({
         name: 'Profile',
         path: '/profile',
-        component: resolve(__dirname, 'pages/profile.vue'),
+        component: resolve(__dirname, 'src/pages/profile.vue'),
         meta: {
           requiresAuth: true
         }
@@ -88,13 +94,13 @@ export default {
         name: 'Klepton',
         path: '/k/:klepton',
         props: true,
-        component: resolve(__dirname, 'pages/kview.vue')
+        component: resolve(__dirname, 'src/pages/kview.vue')
       })
       routes.push({
         name: 'NewPost',
         path: '/k/:klepton/new',
         props: true,
-        component: resolve(__dirname, 'pages/newpost.vue'),
+        component: resolve(__dirname, 'src/pages/newpost.vue'),
         meta: {
           requiresAuth: true
         }
@@ -103,7 +109,7 @@ export default {
         name: 'Post',
         path: '/k/:klepton/p/:post_id',
         props: true,
-        component: resolve(__dirname, 'pages/postview.vue')
+        component: resolve(__dirname, 'src/pages/postview.vue')
       })
     }
   },
@@ -163,5 +169,7 @@ export default {
   ],
 
   // Build Configuration (https://go.nuxtjs.dev/config-build)
-  build: {}
+  build: {
+    extractCSS: true
+  }
 }

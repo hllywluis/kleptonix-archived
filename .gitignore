@@ -3,13 +3,16 @@
 # IDE files
 .idea/
 
+# Public directory
+public/
+
 # Firebase configuration
 .firebaserc/
 .firebase/
 firebaseConfig.js
 
 # Service workers
-static/sw.js
+src/static/sw.js
 
 # Logs
 /logs
