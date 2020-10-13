@@ -4,6 +4,8 @@
 .idea/
 
 # Firebase configuration
+.firebaserc/
+.firebase/
 firebaseConfig.js
 
 # Service workers
