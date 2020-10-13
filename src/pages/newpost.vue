@@ -66,12 +66,12 @@ export default {
           newPost.set({
             author: this.user.data.displayName,
             content: this.post_content,
-            created: firebase.firestore.FieldValue.serverTimestamp(),
+            created: this.$fireStoreObj.FieldValue.serverTimestamp(),
             klepton: this.$route.params.klepton.toString(),
             title: this.post_title
           })
           this.$fireStore.collection('kleptons').doc(this.posting_klepton_id.toString()).update({
-            posts: firebase.firestore.FieldValue.arrayUnion(newPost.id)
+            posts: this.$fireStoreObj.FieldValue.arrayUnion(newPost.id)
           })
           this.submitting = false
           this.$router.go(-1)

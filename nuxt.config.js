@@ -3,7 +3,7 @@ import { config } from './firebaseConfig'
 export default {
   // Global page headers (https://go.nuxtjs.dev/config-head)
   head: {
-    title: 'kleptonix',
+    title: 'Kleptonix',
     meta: [
       { charset: 'utf-8' },
       {
@@ -42,9 +42,9 @@ export default {
 
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
   plugins: [
-    '@/plugins/firestorePlugin',
-    '@/plugins/kleptonixRouterPlugin',
-    '@/plugins/headfulPlugin'
+    '~/plugins/firestorePlugin',
+    '~/plugins/kleptonixRouterPlugin',
+    '~/plugins/headfulPlugin'
   ],
 
   // Set src directory
