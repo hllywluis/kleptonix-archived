@@ -13,7 +13,7 @@ export default {
       {
         hid: 'description',
         name: 'description',
-        content: ''
+        content: 'Kleptonix, the only place where communities shine together.'
       }
     ],
     link: [

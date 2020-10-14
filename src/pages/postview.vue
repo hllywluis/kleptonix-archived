@@ -5,14 +5,17 @@
       <div class="card align-self-center col-md-8">
         <div class="card-body">
           <h3 class="col card-title my-auto text-center text-md-left" style="font-family: 'Bungee', cursive">
-            {{ post.title
+            {{
+              post.title
             }}</h3>
           <hr/>
           <p class="card-text pl-3">{{ post.content }}</p>
           <hr/>
-          <h6 class="card-text text-muted text-center" style="font-family: 'Bungee', cursive">{{ post.author
+          <h6 class="card-text text-muted text-center" style="font-family: 'Bungee', cursive">{{
+              post.author
             }} &#183; {{
-              calculated_time(post.created.toDate()) + ' ago' }}</h6>
+              calculated_time(post.created.toDate()) + ' ago'
+            }}</h6>
         </div>
       </div>
     </div>
@@ -22,45 +25,56 @@
 </template>
 
 <script>
-import navbar from "~/components/navbar";
+import navbar from '~/components/navbar'
 
 export default {
-  name: "post_view",
-  components: {navbar},
-  data() {
+  name: 'post_view',
+  components: { navbar },
+  data () {
     return {
       post: [],
       og_klepton: []
     }
   },
-  methods: {
-    calculated_time: function (date) {
-      let seconds = Math.floor((new Date() - date) / 1000);
-      let interval = Math.floor(seconds / 31536000);
-
-      if (interval > 1) {
-        return interval + " yrs";
-      }
-      interval = Math.floor(seconds / 2592000);
-      if (interval > 1) {
-        return interval + " mo";
-      }
-      interval = Math.floor(seconds / 86400);
-      if (interval > 1) {
-        return interval + " days";
-      }
-      interval = Math.floor(seconds / 3600);
-      if (interval > 1) {
-        return interval + " hrs";
-      }
-      interval = Math.floor(seconds / 60);
-      if (interval > 1) {
-        return interval + " min";
-      }
-      return Math.floor(seconds) + " s";
+  head() {
+    return {
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: `See "${this.post.title}" on Kleptonix, the only place where communities shine together.`
+        }
+      ]
     }
   },
-  firestore() {
+  methods: {
+    calculated_time: function (date) {
+      let seconds = Math.floor((new Date() - date) / 1000)
+      let interval = Math.floor(seconds / 31536000)
+
+      if (interval > 1) {
+        return interval + ' yrs'
+      }
+      interval = Math.floor(seconds / 2592000)
+      if (interval > 1) {
+        return interval + ' mo'
+      }
+      interval = Math.floor(seconds / 86400)
+      if (interval > 1) {
+        return interval + ' days'
+      }
+      interval = Math.floor(seconds / 3600)
+      if (interval > 1) {
+        return interval + ' hrs'
+      }
+      interval = Math.floor(seconds / 60)
+      if (interval > 1) {
+        return interval + ' min'
+      }
+      return Math.floor(seconds) + ' s'
+    }
+  },
+  firestore () {
     this.$fireStore.collection('posts').doc(this.$route.params.post_id).get().then((doc) => {
       this.post = doc.data()
     })
