@@ -44,7 +44,8 @@ export default {
           name: 'description',
           content: `See "${this.post.title}" on Kleptonix, the only place where communities shine together.`
         }
-      ]
+      ],
+      title: `${this.post.title} | ${this.post.klepton ? this.post.klepton.toUpperCase() : ''}`
     }
   },
   methods: {

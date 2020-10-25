@@ -15,6 +15,9 @@ import klepton from '~/components/klepton'
 
 export default {
   name: 'kleptons',
+  head: {
+    title: 'Kleptonix | Browse'
+  },
   components: {
     klepton,
     navbar

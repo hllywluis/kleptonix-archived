@@ -41,6 +41,9 @@ import navbar from '~/components/navbar';
 export default {
   name: "sign_in",
   components: {navbar},
+  head: {
+    title: 'Kleptonix | Sign In'
+  },
   data() {
     return {
       email: '',

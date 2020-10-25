@@ -37,6 +37,11 @@ import navbar from "~/components/navbar";
 export default {
   name: "new_post",
   components: {navbar},
+  head() {
+    return {
+      title: `${this.posting_klepton.title} | New Post`
+    }
+  },
   computed: {
     user() {
       return this.$store.state.user.user

@@ -87,14 +87,6 @@
           </ul>
         </div>
       </div>
-      <vue-headful v-if="onFeed" title="Kleptonix | Feed"></vue-headful>
-      <vue-headful title="Kleptonix | Browse" v-else-if="onKleptons"></vue-headful>
-      <vue-headful v-else-if="onSignIn" title="Kleptonix | Sign In"></vue-headful>
-      <vue-headful v-else-if="onSignUp" title="Kleptonix | Sign Up"></vue-headful>
-      <vue-headful title="Kleptonix | Profile" v-else-if="onProfile"></vue-headful>
-      <vue-headful :title="klepton.title" v-else-if="onKlepton"></vue-headful>
-      <vue-headful :title="klepton.title + ' | ' + 'New Post'" v-if="onNewPost && ready"></vue-headful>
-      <vue-headful :title="post_title + ' | ' + post_klepton.toUpperCase()" v-if="onPost"></vue-headful>
     </nav>
   </client-only>
 </template>

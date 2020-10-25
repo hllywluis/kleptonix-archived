@@ -14,6 +14,11 @@ import navbar from '~/components/navbar'
 export default {
   name: 'profile',
   components: { navbar },
+  head() {
+    return {
+      title: `Kleptonix | ${this.user.data.displayName ? this.user.data.displayName : ''}'s Profile`
+    }
+  },
   computed: {
     user () {
       return this.$store.state.user.user

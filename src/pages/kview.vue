@@ -57,6 +57,11 @@ import navbar from '~/components/navbar'
 export default {
   name: 'KView',
   components: { navbar },
+  head() {
+    return {
+      title: `${this.klepton.title ? this.klepton.title : ''}`
+    }
+  },
   computed: {
     user () {
       return this.$store.state.user.user

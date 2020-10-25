@@ -13,7 +13,7 @@
     "copy": "npm run copy:nuxt && npm run copy:static",
     "copy:nuxt": "mkdir public/_nuxt && cp -r functions/.nuxt/dist/* public/_nuxt",
     "copy:static": "cp -r src/static/* public",
-    "deploy": "firebase deploy --only functions,hosting",
+    "deploy": "npm run build:firebase && firebase deploy --only functions,hosting",
     "start": "nuxt start",
     "start:firebase": "firebase serve --only functions,hosting",
     "generate": "nuxt generate",

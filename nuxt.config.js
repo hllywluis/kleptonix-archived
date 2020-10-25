@@ -43,8 +43,7 @@ export default {
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
   plugins: [
     '~/plugins/firestorePlugin',
-    '~/plugins/kleptonixRouterPlugin',
-    '~/plugins/headfulPlugin'
+    '~/plugins/kleptonixRouterPlugin'
   ],
 
   // Set src directory

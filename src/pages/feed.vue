@@ -61,6 +61,9 @@ import navbar from '~/components/navbar'
 export default {
   name: 'feed',
   components: { navbar },
+  head: {
+    title: 'Kleptonix | Feed'
+  },
   data () {
     return {
       user_subs: [],
