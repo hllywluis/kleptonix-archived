@@ -152,6 +152,9 @@ export default {
         preload: false,
         chunkName: process.env.NODE_ENV !== 'production' ? 'firebase-auth' : '[id]',
         enablePersistence: true
+      },
+      analytics: {
+        collectionEnabled: true
       }
     }
   },
