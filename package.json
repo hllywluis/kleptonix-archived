@@ -21,26 +21,26 @@
     "lint": "npm run lint:js"
   },
   "dependencies": {
-    "@nuxtjs/firebase": "^6.1.1",
+    "@nuxtjs/firebase": "^7.5.0",
     "@nuxtjs/pwa": "^3.3.5",
-    "bootstrap": "^4.5.3",
+    "bootstrap": "^5.0.1",
     "bootstrap-vue": "^2.21.2",
-    "core-js": "^3.13.1",
+    "core-js": "^3.14.0",
     "express": "^4.17.1",
-    "firebase": "^7.24.0",
+    "firebase": "^8.6.5",
     "firebase-admin": "^9.9.0",
     "firebase-functions": "^3.14.1",
-    "nuxt": "^2.14.7",
-    "vue": "^2.6.12",
+    "nuxt": "^2.15.6",
+    "vue": "^2.6.13",
     "vue-router": "^3.5.1",
-    "vuefire": "^2.2.4"
+    "vuefire": "^2.2.5"
   },
   "devDependencies": {
     "@nuxt/types": "^2.15.6",
-    "@nuxtjs/eslint-config": "^4.0.0",
+    "@nuxtjs/eslint-config": "^6.0.1",
     "@nuxtjs/eslint-module": "^3.0.2",
     "babel-eslint": "^10.1.0",
-    "eslint": "^7.12.0",
+    "eslint": "^7.28.0",
     "eslint-plugin-nuxt": "^2.0.0"
   }
 }
