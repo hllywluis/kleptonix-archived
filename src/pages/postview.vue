@@ -76,7 +76,7 @@ export default {
     }
   },
   firestore () {
-    this.$fireStore.collection('posts').doc(this.$route.params.post_id).get().then((doc) => {
+    this.$fire.firestore.collection('posts').doc(this.$route.params.post_id).get().then((doc) => {
       this.post = doc.data()
     })
   }

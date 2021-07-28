@@ -120,9 +120,9 @@ export default {
   },
   firestore () {
     if (this.user.loggedIn) {
-      this.$fireStore.collection('userdata').doc(this.user.data.uid).get().then((doc) => {
+      this.$fire.firestore.collection('userdata').doc(this.user.data.uid).get().then((doc) => {
         for (const sub of doc.get('subs')) {
-          this.$fireStore.collection('kleptons').doc(sub).get().then((doc) => {
+          this.$fire.firestore.collection('kleptons').doc(sub).get().then((doc) => {
             this.user_subs.unshift(doc.get('stitle'))
           })
         }
@@ -131,8 +131,8 @@ export default {
   },
   methods: {
     sign_out () {
-      if (this.$fireAuth.currentUser) {
-        this.$fireAuth.signOut().then(() => {
+      if (this.$fire.auth.currentUser) {
+        this.$fire.auth.signOut().then(() => {
           localStorage.clear()
           this.$router.go(0)
         })

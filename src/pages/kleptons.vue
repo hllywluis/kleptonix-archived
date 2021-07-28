@@ -28,7 +28,7 @@ export default {
     }
   },
   firestore () {
-    const kleptonData = this.$fireStore.collection('kleptons').orderBy('created', 'desc')
+    const kleptonData = this.$fire.firestore.collection('kleptons').orderBy('created', 'desc')
     return {
       kleptons: kleptonData
     }

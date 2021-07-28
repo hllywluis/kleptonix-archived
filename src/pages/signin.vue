@@ -54,7 +54,7 @@ export default {
   methods: {
     login: function () {
       this.logging_in = true
-      this.$fireAuth.signInWithEmailAndPassword(this.email, this.password).then(() => {
+      this.$fire.auth.signInWithEmailAndPassword(this.email, this.password).then(() => {
           this.logging_in = false
           this.$router.replace({name: 'Feed'})
         }

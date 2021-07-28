@@ -102,12 +102,12 @@ export default {
   methods: {
     subscribe: function () {
       if (this.user.loggedIn) {
-        this.$fireStore.collection('userdata').doc(this.user.data.uid).update({
-          subs: this.$fireStoreObj.FieldValue.arrayUnion(this.kleptonID)
+        this.$fire.firestore.collection('userdata').doc(this.user.data.uid).update({
+          subs: this.$fire.firestoreObj.FieldValue.arrayUnion(this.kleptonID)
         })
-        this.$fireStore.collection('kleptons').doc(this.kleptonID.toString()).get().then((doc) => {
+        this.$fire.firestore.collection('kleptons').doc(this.kleptonID.toString()).get().then((doc) => {
           let user_count = doc.get('user_count')
-          this.$fireStore.collection('kleptons').doc(this.kleptonID.toString()).update({
+          this.$fire.firestore.collection('kleptons').doc(this.kleptonID.toString()).update({
             user_count: user_count + 1
           })
         })
@@ -116,12 +116,12 @@ export default {
     },
     unsubscribe: function () {
       if (this.user.loggedIn) {
-        this.$fireStore.collection('userdata').doc(this.user.data.uid).update({
-          subs: this.$fireStoreObj.FieldValue.arrayRemove(this.kleptonID)
+        this.$fire.firestore.collection('userdata').doc(this.user.data.uid).update({
+          subs: this.$fire.firestoreObj.FieldValue.arrayRemove(this.kleptonID)
         })
-        this.$fireStore.collection('kleptons').doc(this.kleptonID.toString()).get().then((doc) => {
+        this.$fire.firestore.collection('kleptons').doc(this.kleptonID.toString()).get().then((doc) => {
           let user_count = doc.get('user_count')
-          this.$fireStore.collection('kleptons').doc(this.kleptonID.toString()).update({
+          this.$fire.firestore.collection('kleptons').doc(this.kleptonID.toString()).update({
             user_count: user_count - 1
           })
         })
@@ -154,17 +154,17 @@ export default {
       return Math.floor(seconds) + ' s'
     },
     update_view: function () {
-      const kleptref = this.$fireStore.collection('kleptref').doc(this.$route.params.klepton)
+      const kleptref = this.$fire.firestore.collection('kleptref').doc(this.$route.params.klepton)
       kleptref.get().then((docSnapshot) => {
         docSnapshot.exists ? kleptref.onSnapshot((doc) => {
-          this.$fireStore.collection('kleptons').doc(doc.get('kid')).get().then((doc) => {
+          this.$fire.firestore.collection('kleptons').doc(doc.get('kid')).get().then((doc) => {
             this.kleptonID = doc.id
-            this.$fireStore.collection('userdata').doc(doc.get('owner')).get().then((doc) => {
+            this.$fire.firestore.collection('userdata').doc(doc.get('owner')).get().then((doc) => {
               this.owner = doc.get('dname')
               this.owner_ready = true
             })
             if (this.user.loggedIn) {
-              this.$fireStore.collection('userdata').doc(this.user.data.uid).get().then((doc) => {
+              this.$fire.firestore.collection('userdata').doc(this.user.data.uid).get().then((doc) => {
                 this.check_refresh = doc.get('subs').includes(this.kleptonID)
               })
             }
@@ -172,7 +172,7 @@ export default {
             if (doc.get('posts')) {
               if (doc.get('posts').length > 0) {
                 for (let post of doc.get('posts')) {
-                  const postRef = this.$fireStore.collection('posts').doc(post)
+                  const postRef = this.$fire.firestore.collection('posts').doc(post)
                   postRef.onSnapshot((doc) => {
                     if (doc.exists) {
                       if (!this.post_ids.includes(doc.id)) {

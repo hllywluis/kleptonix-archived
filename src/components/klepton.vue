@@ -50,7 +50,7 @@ export default {
     }
   },
   firestore () {
-    const kleptref = this.$fireStore.collection('kleptref').doc(this.stitle)
+    const kleptref = this.$fire.firestore.collection('kleptref').doc(this.stitle)
     kleptref.get().then((docSnapshot) => {
       this.kleptonExists = docSnapshot.exists
     })

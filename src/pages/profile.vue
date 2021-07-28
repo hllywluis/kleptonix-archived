@@ -36,7 +36,7 @@ export default {
   },
   firestore () {
     if (this.$store.state.user.user !== undefined) {
-      const userdataRef = this.$fireStore.collection('userdata').doc(this.user.data.uid)
+      const userdataRef = this.$fire.firestore.collection('userdata').doc(this.user.data.uid)
       userdataRef.get().then((docSnapshot) => {
         if (docSnapshot.exists) {
           userdataRef.onSnapshot((doc) => {

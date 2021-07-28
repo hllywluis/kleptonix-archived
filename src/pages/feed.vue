@@ -112,7 +112,7 @@ export default {
   },
   firestore () {
     if (this.user.loggedIn) {
-      const userdataRef = this.$fireStore.collection('userdata').doc(this.user.data.uid)
+      const userdataRef = this.$fire.firestore.collection('userdata').doc(this.user.data.uid)
       userdataRef.get().then((docSnapshot) => {
         if (docSnapshot.exists) {
           if (!docSnapshot.get('dname')) {
@@ -130,12 +130,12 @@ export default {
               }
             } else {
               for (const sub of doc.get('subs')) {
-                const subRef = this.$fireStore.collection('kleptons').doc(sub)
+                const subRef = this.$fire.firestore.collection('kleptons').doc(sub)
                 subRef.onSnapshot((doc) => {
                   if (!this.user_sub_ids.some(id => id === doc.id)) {
                     this.user_sub_ids.push(doc.id)
                     this.user_subs.push(doc.data())
-                    const postRef = this.$fireStore.collection('posts').orderBy('created')
+                    const postRef = this.$fire.firestore.collection('posts').orderBy('created')
                     for (const post of doc.get('posts')) {
                       postRef.get().then((doc) => {
                         for (const individualPost of doc.docs) {
@@ -187,7 +187,7 @@ export default {
         }
       })
     } else {
-      const postData = this.$fireStore.collection('posts').orderBy('created', 'desc')
+      const postData = this.$fire.firestore.collection('posts').orderBy('created', 'desc')
       postData.get().then((doc) => {
         for (const post of doc.docs) {
           this.kleptons.push(post.get('klepton'))

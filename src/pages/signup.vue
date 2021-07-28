@@ -79,10 +79,10 @@ export default {
         alert("Please enter a username for your account.")
         this.signing_up = false
       } else {
-        this.$fireAuth.createUserWithEmailAndPassword(this.email, this.password).then(user => {
-            const userdataRef = this.$fireStore.collection('userdata').doc(user.user.uid)
+        this.$fire.auth.createUserWithEmailAndPassword(this.email, this.password).then(user => {
+            const userdataRef = this.$fire.firestore.collection('userdata').doc(user.user.uid)
             user.user.updateProfile({displayName: this.username}).then(() => {
-                this.$fireAuth.signInWithEmailAndPassword(this.email, this.password).then(() => {
+                this.$fire.auth.signInWithEmailAndPassword(this.email, this.password).then(() => {
                   userdataRef.set({
                     dname: this.username,
                     hidename: false,

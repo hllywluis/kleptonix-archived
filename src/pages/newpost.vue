@@ -71,16 +71,16 @@ export default {
           alert('Your post needs some content.')
         } else {
           this.submitting = true
-          let newPost = this.$fireStore.collection('posts').doc()
+          let newPost = this.$fire.firestore.collection('posts').doc()
           newPost.set({
             author: this.user.data.displayName,
             content: this.post_content,
-            created: this.$fireStoreObj.FieldValue.serverTimestamp(),
+            created: this.$fire.firestoreObj.FieldValue.serverTimestamp(),
             klepton: this.$route.params.klepton.toString(),
             title: this.post_title
           })
-          this.$fireStore.collection('kleptons').doc(this.posting_klepton_id.toString()).update({
-            posts: this.$fireStoreObj.FieldValue.arrayUnion(newPost.id)
+          this.$fire.firestore.collection('kleptons').doc(this.posting_klepton_id.toString()).update({
+            posts: this.$fire.firestoreObj.FieldValue.arrayUnion(newPost.id)
           })
           this.submitting = false
           this.$router.go(-1)
@@ -89,10 +89,10 @@ export default {
     }
   },
   firestore () {
-    const kleptRef = this.$fireStore.collection('kleptref').doc(this.$route.params.klepton)
+    const kleptRef = this.$fire.firestore.collection('kleptref').doc(this.$route.params.klepton)
     kleptRef.get().then((doc) => {
       this.posting_klepton_id = doc.get('kid')
-      this.$fireStore.collection('kleptons').doc(doc.get('kid')).get().then((doc) => {
+      this.$fire.firestore.collection('kleptons').doc(doc.get('kid')).get().then((doc) => {
         this.posting_klepton = doc.data()
         this.ready = true
       })
