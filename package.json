@@ -21,7 +21,7 @@
     "lint": "npm run lint:js"
   },
   "dependencies": {
-    "@nuxtjs/firebase": "^7.6.1",
+    "@nuxtjs/firebase": "^8.2.0",
     "@nuxtjs/pwa": "^3.3.5",
     "bootstrap": "^5.0.2",
     "bootstrap-vue": "^2.21.2",
